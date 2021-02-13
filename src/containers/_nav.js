@@ -9,7 +9,7 @@ const _nav = [
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
     badge: {
       color: "info",
-      text: "NEW",
+      text: "Temporary disabled",
     },
     addLinkClass: "c-disabled",
     disabled: true,
