@@ -60,6 +60,7 @@ const Widgets = React.lazy(() => import("./views/widgets/Widgets"));
 const Users = React.lazy(() => import("./views/users/Users"));
 const User = React.lazy(() => import("./views/users/User"));
 const UserCreate = React.lazy(() => import("./views/users/UserCreate"));
+const UserEdit = React.lazy(() => import("./views/users/UserEdit"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -123,6 +124,12 @@ const routes = [
     exact: true,
     name: "Create User",
     component: UserCreate,
+  },
+  {
+    path: "/users/:id/edit",
+    exact: true,
+    name: "Edit User",
+    component: UserEdit,
   },
   { path: "/users/:id", exact: true, name: "User Details", component: User },
 ];
