@@ -12,7 +12,7 @@ import {
   CRow,
 } from "@coreui/react";
 
-import UsersData from "./UsersData";
+import usersData from "./UsersData";
 import CIcon from "@coreui/icons-react";
 
 const fields = [
@@ -29,7 +29,37 @@ const fields = [
   },
 ];
 
+const getBadge = (status) => {
+  switch (status) {
+    case "Active":
+      return "success";
+    case "Inactive":
+      return "secondary";
+    case "Pending":
+      return "warning";
+    case "Banned":
+      return "danger";
+    default:
+      return "primary";
+  }
+};
+
 const Users = () => {
+  const [details, setDetails] = useState([]);
+
+  const toggleDetails = (index) => {
+    const position = details.indexOf(index);
+    let newDetails = details.slice();
+    if (position !== -1) {
+      newDetails.splice(position, 1);
+    } else {
+      newDetails = [...details, index];
+    }
+    setDetails(newDetails);
+  };
+
+  const history = useHistory();
+
   return (
     <CRow>
       <CCol xl={10}>
@@ -38,9 +68,8 @@ const Users = () => {
             <strong>User List</strong>
           </CCardHeader>
           <CCardBody>
-            <UsersData url="http://localhost:8080/users" fields={fields} />
-            {/* <CDataTable
-              items={data}
+            <CDataTable
+              items={usersData}
               fields={fields}
               tableFilter
               hover
@@ -81,7 +110,8 @@ const Users = () => {
                         <CButton
                           size="sm"
                           color="primary"
-                          onClick={() => history.push(`/users/${item.id}`)}
+                          // onClick={() => history.push(`/users/${item.id}`)}
+                          to={`/users/${item.id}`}
                         >
                           Show
                         </CButton>
@@ -101,7 +131,7 @@ const Users = () => {
                   );
                 },
               }}
-            /> */}
+            />
           </CCardBody>
         </CCard>
       </CCol>

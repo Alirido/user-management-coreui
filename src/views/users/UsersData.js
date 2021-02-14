@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import {
   CBadge,
@@ -7,6 +7,8 @@ import {
   CCollapse,
   CDataTable,
 } from "@coreui/react";
+
+import axios from "axios";
 
 const getBadge = (status) => {
   switch (status) {
@@ -33,9 +35,15 @@ class UsersData extends React.Component {
   }
 
   fetchUsers() {
-    fetch(this.props.url)
-      .then((response) => response.json())
-      .then((json) => this.setState({ data: json }));
+    axios
+      .get(this.props.url)
+      .then((response) => {
+        this.setState({ data: response.data.data });
+        console.log(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -52,14 +60,10 @@ class UsersData extends React.Component {
     } else {
       newDetails = [...this.state.details, index];
     }
-    this.setSSate({
+    this.setState({
       details: newDetails,
     });
   }
-
-  // gotoFunction = (link) => {
-  //   this.props.history.push(link);
-  // };
 
   render() {
     return (
@@ -75,11 +79,7 @@ class UsersData extends React.Component {
           sorter
           pagination
           scopedSlots={{
-            status: (item) => (
-              <td>
-                <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-              </td>
-            ),
+            // id: (item, index) => {},
             show_details: (item, index) => {
               return (
                 <td className="py-2">
@@ -101,7 +101,7 @@ class UsersData extends React.Component {
               return (
                 <CCollapse show={this.state.details.includes(index)}>
                   <CCardBody>
-                    <h4>{item.username}</h4>
+                    <h4>{item.name}</h4>
                     <p className="text-muted">User with ID: {item.id}</p>
                     <CButton
                       size="sm"
@@ -116,6 +116,7 @@ class UsersData extends React.Component {
                       color="info"
                       className="ml-1"
                       // onClick={() => history.push(`/users/${item.id}/edit`)}
+                      to={`/users/${item.id}/edit`}
                     >
                       Edit
                     </CButton>
@@ -131,9 +132,9 @@ class UsersData extends React.Component {
       </>
     );
   }
-}*/
+}
 
-const usersData = [
+/*const usersData = [
   {
     id: 0,
     name: "John Doe",
@@ -316,6 +317,6 @@ const usersData = [
     role: "Alien",
     status: "Don't panic!",
   },
-];
+];*/
 
-export default usersData;
+export default UsersData;
