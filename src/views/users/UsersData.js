@@ -79,7 +79,9 @@ class UsersData extends React.Component {
           sorter
           pagination
           scopedSlots={{
-            // id: (item, index) => {},
+            no: (item, index) => {
+              return <td>{index + 1}</td>;
+            },
             show_details: (item, index) => {
               return (
                 <td className="py-2">

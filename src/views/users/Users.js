@@ -12,9 +12,9 @@ import UsersData from "./UsersData";
 import CIcon from "@coreui/icons-react";
 
 const fields = [
-  { key: "name", _style: { width: "40%" } },
+  { key: "no", _style: { width: "6%" }, sorter: false, filter: false },
+  "name",
   "username",
-  { key: "role", _style: { width: "20%" } },
   {
     key: "show_details",
     label: "",
