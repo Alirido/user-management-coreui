@@ -6,18 +6,7 @@ import axios from "axios";
 const User = ({ match }) => {
   const [user, setUser] = useState([]);
   const api_url = "http://localhost:8080/users/" + match.params.id;
-  // const user = usersData.find((user) => user.id.toString() === match.params.id);
 
-  // const userDetails = user
-  //   ? Object.entries(user)
-  //   : [
-  //       [
-  //         "id",
-  //         <span>
-  //           <CIcon className="text-muted" name="cui-icon-ban" /> Not found
-  //         </span>,
-  //       ],
-  //     ];
   useEffect(() => {
     axios
       .get(api_url)
