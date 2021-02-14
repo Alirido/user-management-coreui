@@ -111,12 +111,12 @@ class UsersData extends React.Component {
                     <CButton
                       size="sm"
                       color="info"
-                      className="ml-1"
+                      className="ml-2"
                       to={`/users/${item.id}/edit`}
                     >
                       Edit
                     </CButton>
-                    <CButton size="sm" color="danger" className="ml-1">
+                    <CButton size="sm" color="danger" className="ml-2">
                       Delete
                     </CButton>
                   </CCardBody>

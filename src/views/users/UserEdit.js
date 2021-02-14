@@ -35,7 +35,7 @@ const CreateUser = () => {
       <CCol xl={8}>
         <CCard>
           <CCardHeader>
-            User Edit
+            Edit User
             <small> Form</small>
           </CCardHeader>
           <CCardBody>
@@ -84,7 +84,7 @@ const CreateUser = () => {
                     id="hf-password"
                     name="hf-password"
                     placeholder="Enter Password..."
-                    autoComplete="current-password"
+                    autoComplete="password"
                   />
                   <CFormText className="help-block">
                     Please enter your password
@@ -95,10 +95,10 @@ const CreateUser = () => {
           </CCardBody>
           <CCardFooter>
             <CButton type="submit" size="sm" color="primary">
-              <CIcon name="cil-scrubber" /> Submit
+              Submit
             </CButton>{" "}
-            <CButton type="reset" size="sm" color="danger">
-              <CIcon name="cil-ban" /> Reset
+            <CButton type="Cancel" size="sm" color="danger" to="/users">
+              Cancel
             </CButton>
           </CCardFooter>
         </CCard>
