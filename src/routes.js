@@ -121,17 +121,15 @@ const routes = [
   { path: "/users", exact: true, name: "Users", component: Users },
   {
     path: "/users/create",
-    exact: true,
     name: "Create User",
     component: UserCreate,
   },
+  { path: "/users/:id", exact: true, name: "User Details", component: User },
   {
     path: "/users/:id/edit",
-    exact: true,
     name: "Edit User",
     component: UserEdit,
   },
-  { path: "/users/:id", exact: true, name: "User Details", component: User },
 ];
 
 export default routes;
