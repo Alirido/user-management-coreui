@@ -13,7 +13,6 @@ import {
   CLabel,
   CRow,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
 
 const CreateUser = () => {
   return (

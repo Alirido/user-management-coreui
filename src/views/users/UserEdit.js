@@ -14,22 +14,7 @@ import {
   CRow,
 } from "@coreui/react";
 
-import CIcon from "@coreui/icons-react";
-
 const CreateUser = () => {
-  // const history = useHistory();
-  // const queryPage = useLocation().search.match(/page=([0-9]+)/, "");
-  // const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
-  // const [page, setPage] = useState(currentPage);
-
-  // const pageChange = (newPage) => {
-  //   currentPage !== newPage && history.push(`/users?page=${newPage}`);
-  // };
-
-  // useEffect(() => {
-  //   currentPage !== page && setPage(currentPage);
-  // }, [currentPage, page]);
-
   return (
     <CRow>
       <CCol xl={8}>
