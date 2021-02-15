@@ -1,29 +1,16 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import {
-  CBadge,
   CButton,
   CCardBody,
   CCollapse,
   CDataTable,
+  CModal,
+  CModalBody,
+  CModalFooter,
+  CModalHeader,
 } from "@coreui/react";
 
 import axios from "axios";
-
-const getBadge = (status) => {
-  switch (status) {
-    case "Active":
-      return "success";
-    case "Inactive":
-      return "secondary";
-    case "Pending":
-      return "warning";
-    case "Banned":
-      return "danger";
-    default:
-      return "primary";
-  }
-};
 
 class UsersData extends React.Component {
   constructor(props) {
@@ -31,6 +18,7 @@ class UsersData extends React.Component {
     this.state = {
       data: [],
       details: [],
+      modal: false,
     };
   }
 
@@ -63,6 +51,26 @@ class UsersData extends React.Component {
     this.setState({
       details: newDetails,
     });
+  }
+
+  toggleDeleteUser() {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
+  deleteUser(userId) {
+    axios
+      .delete(this.props.url + "/" + userId)
+      .then((response) => {
+        this.toggleDeleteUser();
+        this.fetchUsers();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.message);
+        return;
+      });
   }
 
   render() {
@@ -116,10 +124,40 @@ class UsersData extends React.Component {
                     >
                       Edit
                     </CButton>
-                    <CButton size="sm" color="danger" className="ml-2">
+                    <CButton
+                      onClick={this.toggleDeleteUser.bind(this)}
+                      size="sm"
+                      color="danger"
+                      className="ml-2"
+                    >
                       Delete
                     </CButton>
                   </CCardBody>
+                  <CModal
+                    show={this.state.modal}
+                    onClose={this.toggleDeleteUser.bind(this)}
+                    color="danger"
+                  >
+                    <CModalHeader closeButton>ARE YOU SURE?</CModalHeader>
+                    <CModalBody>
+                      User with ID:{item.id} will be deleted. You will not be
+                      able to recover user that has been deleted
+                    </CModalBody>
+                    <CModalFooter>
+                      <CButton
+                        onClick={this.deleteUser.bind(this, item.id)}
+                        color="danger"
+                      >
+                        Yes, delete it!
+                      </CButton>{" "}
+                      <CButton
+                        color="secondary"
+                        onClick={this.toggleDeleteUser.bind(this)}
+                      >
+                        Cancel
+                      </CButton>
+                    </CModalFooter>
+                  </CModal>
                 </CCollapse>
               );
             },

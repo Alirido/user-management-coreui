@@ -15,7 +15,6 @@ import {
 import axios from "axios";
 
 import validate from "./formValidation";
-import { Redirect } from "react-router-dom";
 
 class CreateUser extends Component {
   constructor(props) {
