@@ -39,7 +39,7 @@ const Users = () => {
       </CCol>
       <CCol xl={2}>
         <CButton block color="success" to="/users/create">
-          <CIcon size="sm" name="cil-user-follow" /> Add User
+          <CIcon size="sm" name="cil-user-follow" className="mr-2" /> Add User
         </CButton>
       </CCol>
     </CRow>
