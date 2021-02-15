@@ -29,7 +29,7 @@ class CreateUser extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { isValid, errors } = validate(this.state);
+    const { isValid, errors } = validate(this.state, "create");
 
     this.setState({ errors: errors });
     if (isValid) {
